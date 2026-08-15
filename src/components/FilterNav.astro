@@ -1,0 +1,26 @@
+---
+import type { Filter } from '../lib/posts';
+
+interface Props {
+  current?: Filter;
+}
+
+const { current = 'all' } = Astro.props;
+
+const items = [
+  { href: '/', kind: 'all', label: 'All' },
+  { href: '/games', kind: 'game', label: 'Games' },
+  { href: '/apps', kind: 'app', label: 'Apps' },
+] as const;
+---
+<nav class="filters" aria-label="Filter posts">
+  {items.map((item) => (
+    <a
+      href={item.href}
+      data-filter={item.kind}
+      aria-current={item.kind === current ? 'page' : undefined}
+    >
+      {item.label}
+    </a>
+  ))}
+</nav>

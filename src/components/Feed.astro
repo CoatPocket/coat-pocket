@@ -1,0 +1,36 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
+import type { Filter } from '../lib/posts';
+import FilterNav from './FilterNav.astro';
+import Lockup from './Lockup.astro';
+import Slide from './Slide.astro';
+
+interface Props {
+  filter?: Filter;
+}
+
+const { filter = 'all' } = Astro.props;
+
+const posts = (await getCollection('posts', ({ data }) => {
+  return filter === 'all' || data.kind === filter;
+})).sort((a, b) => {
+  const byDate = b.data.date.valueOf() - a.data.date.valueOf();
+  if (byDate !== 0) return byDate;
+  return a.data.title.localeCompare(b.data.title);
+});
+---
+<main class="feed-page">
+  <div class="feed" role="feed" aria-label="coat pocket posts">
+    {posts.map((post: CollectionEntry<'posts'>) => (
+      <Slide post={post} current={filter} />
+    ))}
+    <article class="slide slide-bone" data-empty hidden={posts.length > 0}>
+      <div class="slide-inner">
+        <Lockup />
+        <FilterNav current={filter} />
+        <p class="empty">Nothing in this pocket yet.</p>
+      </div>
+    </article>
+  </div>
+</main>

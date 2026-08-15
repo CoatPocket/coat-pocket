@@ -1,1 +1,2 @@
-<!-- Retired. This repo is an Astro static site now. -->
+<!-- Retired. coat-pocket is an Astro static site. See src/pages. -->
+<template></template>

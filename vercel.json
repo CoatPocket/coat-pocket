@@ -23,6 +23,10 @@
     {
       "source": "/covers/leave-by.png",
       "destination": "/covers/leave-by.svg"
+    },
+    {
+      "source": "/covers/dont-walk.png",
+      "destination": "/covers/dont-walk.svg"
     }
   ]
 }

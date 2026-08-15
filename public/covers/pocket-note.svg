@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="390" height="844" viewBox="0 0 390 844" role="img" aria-label="coat pocket note">
-  <rect width="390" height="844" fill="#F3EDE3"/>
-  <rect x="48" y="180" width="294" height="360" rx="18" fill="none" stroke="#111111" stroke-width="4"/>
-  <path d="M48 268h294" fill="none" stroke="#111111" stroke-width="4"/>
-  <path d="M140 268c0 70 110 70 110 0" fill="none" stroke="#111111" stroke-width="4"/>
-  <text x="195" y="620" text-anchor="middle" font-family="IBM Plex Sans, Geist, system-ui, sans-serif" font-size="22" font-weight="600" fill="#111111">coat pocket</text>
-  <text x="195" y="652" text-anchor="middle" font-family="IBM Plex Sans, Geist, system-ui, sans-serif" font-size="14" fill="#111111">one post. one screen.</text>
-</svg>

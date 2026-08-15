@@ -43,6 +43,5 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
   </head>
   <body data-theme={theme} style={`background:${themeColor}`}>
     <slot />
-    <script is:inline src="/filter.js"></script>
   </body>
 </html>

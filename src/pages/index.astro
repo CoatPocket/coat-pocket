@@ -1,52 +1,7 @@
 ---
-import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
-import Slide from '../components/Slide.astro';
-import Lockup from '../components/Lockup.astro';
-import FilterNav from '../components/FilterNav.astro';
-import { isKind, type Filter } from '../lib/posts';
-
-const raw = Astro.url.searchParams.get('kind');
-const kind = isKind(raw) ? raw : undefined;
-const current: Filter = kind ?? 'all';
-
-const posts = (await getCollection('posts')).sort((a, b) => {
-  const byDate = b.data.date.valueOf() - a.data.date.valueOf();
-  if (byDate !== 0) return byDate;
-  return a.data.title.localeCompare(b.data.title);
-});
-
-const shown = kind ? posts.filter((post) => post.data.kind === kind) : posts;
-const lead = shown[0];
-const theme = lead
-  ? lead.data.kind === 'game'
-    ? 'ink'
-    : 'bone'
-  : kind === 'game'
-    ? 'ink'
-    : 'bone';
+import Feed from '../components/Feed.astro';
 ---
-<Base theme={theme}>
-  <main class="feed-page">
-    <div class="feed" id="feed" role="feed" aria-label="coat pocket posts">
-      {posts.map((post) => (
-        <Slide
-          post={post}
-          current={current}
-          hidden={Boolean(kind && post.data.kind !== kind)}
-        />
-      ))}
-      <article
-        class:list={['slide', kind === 'game' ? 'slide-ink' : 'slide-bone']}
-        data-empty
-        hidden={shown.length > 0}
-      >
-        <div class="slide-inner">
-          <Lockup inverse={kind === 'game'} />
-          <FilterNav current={current} />
-          <p class="empty">Nothing in this pocket yet.</p>
-        </div>
-      </article>
-    </div>
-  </main>
+<Base title="coat pocket" description="phone-first notes on the games and apps we ship." theme="bone">
+  <Feed filter="all" />
 </Base>

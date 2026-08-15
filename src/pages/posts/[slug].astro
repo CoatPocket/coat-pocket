@@ -18,9 +18,6 @@ interface Props {
 }
 
 const { post } = Astro.props;
-if (!post) {
-  return Astro.redirect('/404');
-}
 const { Content } = await render(post);
 const isGame = post.data.kind === 'game';
 const pageTitle = post.data.title + ' — coat pocket';
@@ -43,7 +40,7 @@ const dateIso = post.data.date.toISOString().slice(0, 10);
       </div>
       <div class="note-actions">
         {post.data.url && (
-          <a class="cta" href={post.data.url} rel="noopener noreferrer">
+          <a class="cta" href={post.data.url} target="_blank" rel="noreferrer">
             {ctaLabel(post.data.kind)}
           </a>
         )}

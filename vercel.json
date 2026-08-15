@@ -14,5 +14,11 @@
       "destination": "/apps/",
       "permanent": false
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/covers/parked.png",
+      "destination": "/covers/parked.svg"
+    }
   ]
 }

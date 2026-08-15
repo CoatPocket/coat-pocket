@@ -19,6 +19,10 @@
     {
       "source": "/covers/parked.png",
       "destination": "/covers/parked.svg"
+    },
+    {
+      "source": "/covers/leave-by.png",
+      "destination": "/covers/leave-by.svg"
     }
   ]
 }

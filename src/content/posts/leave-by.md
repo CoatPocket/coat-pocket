@@ -2,7 +2,7 @@
 title: Leave By
 date: 2026-08-15
 kind: app
-hero: /covers/leave-by.svg
+hero: /covers/leave-by.png
 dek: When to walk out the door.
 url: https://leave-by-eight.vercel.app
 ---

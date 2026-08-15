@@ -2,7 +2,7 @@
 title: Parked
 date: 2026-08-15
 kind: app
-hero: /covers/parked.png
+hero: /covers/parked.svg
 dek: Paint the pillar. That's the sign.
 url: https://parked-kohl.vercel.app
 ---

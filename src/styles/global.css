@@ -119,20 +119,20 @@ img {
 }
 
 .slide-title {
-  margin: 12px 0 6px;
+  margin: 12px 0 0;
   font-size: clamp(36px, 10vw, 52px);
   font-weight: 600;
   letter-spacing: -0.04em;
-  line-height: 0.95;
+  line-height: 1.1;
+  overflow: visible;
 }
 
 .slide-dek {
-  margin: 0;
+  margin: 12px 0 0;
   font-size: 18px;
   font-weight: 400;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  line-height: 1.35;
+  overflow: visible;
 }
 
 .slide-hero {
@@ -216,15 +216,16 @@ img {
 }
 
 .note-title {
-  margin: 12px 0 16px;
+  margin: 12px 0 0;
   font-size: clamp(36px, 10vw, 52px);
   font-weight: 600;
   letter-spacing: -0.04em;
-  line-height: 0.95;
+  line-height: 1.1;
+  overflow: visible;
 }
 
 .note-body {
-  margin: 0 0 24px;
+  margin: 16px 0 24px;
   font-size: 20px;
 }
 

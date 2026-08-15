@@ -1,9 +1,1 @@
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-
-export default defineConfig({
-  plugins: [vue()],
-  test: {
-    environment: 'node',
-  },
-})
+// Retired. This repo is an Astro static site now.

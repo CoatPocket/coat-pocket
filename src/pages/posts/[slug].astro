@@ -1,0 +1,51 @@
+---
+import { getCollection, render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Lockup from '../../components/Lockup.astro';
+import { ctaLabel, formatDate } from '../../lib/posts';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+interface Props {
+  post: CollectionEntry<'posts'>;
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const isGame = post.data.kind === 'game';
+const pageTitle = post.data.title + ' — coat pocket';
+const dateIso = post.data.date.toISOString().slice(0, 10);
+---
+<Base title={pageTitle} description={post.data.dek} theme={isGame ? 'ink' : 'bone'}>
+  <article class:list={['page', isGame ? 'page-ink' : 'page-bone']}>
+    <div class="page-inner">
+      <Lockup inverse={isGame} />
+      <div class="note-hero">
+        <img src={post.data.hero} alt={post.data.title + ' screenshot'} />
+      </div>
+      <p class="note-meta">
+        <span>{post.data.kind}</span>
+        <time datetime={dateIso}>{formatDate(post.data.date)}</time>
+      </p>
+      <h1 class="note-title">{post.data.title}</h1>
+      <div class="note-body">
+        <Content />
+      </div>
+      <div class="note-actions">
+        {post.data.url && (
+          <a class="cta" href={post.data.url} target="_blank" rel="noreferrer">
+            {ctaLabel(post.data.kind)}
+          </a>
+        )}
+        <a class="back" href="/">Back</a>
+      </div>
+    </div>
+  </article>
+</Base>

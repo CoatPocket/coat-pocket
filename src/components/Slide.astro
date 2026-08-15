@@ -1,0 +1,27 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { ctaLabel } from '../lib/posts';
+import FilterNav from './FilterNav.astro';
+import Lockup from './Lockup.astro';
+
+interface Props {
+  post: CollectionEntry<'posts'>;
+  current?: 'all' | 'game' | 'app';
+  hidden?: boolean;
+}
+
+const { post, current = 'all', hidden = false } = Astro.props;
+const isGame = post.data.kind === 'game';
+---
+<article class:list={['slide', isGame ? 'slide-ink' : 'slide-bone']} data-kind={post.data.kind} hidden={hidden}>
+  <div class="slide-inner">
+    <Lockup inverse={isGame} />
+    <FilterNav current={current} />
+    <h1 class="slide-title">{post.data.title}</h1>
+    <p class="slide-dek">{post.data.dek}</p>
+    <div class="slide-hero">
+      <img src={post.data.hero} alt={`${post.data.title} screenshot`} />
+    </div>
+    <a class="cta" href={`/posts/${post.id}/`}>{ctaLabel(post.data.kind)}</a>
+  </div>
+</article>

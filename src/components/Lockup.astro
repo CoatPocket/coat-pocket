@@ -1,0 +1,10 @@
+---
+interface Props {
+  inverse?: boolean;
+}
+const { inverse = false } = Astro.props;
+const src = inverse ? '/lockup-inverse.svg' : '/lockup.svg';
+---
+<a class="brand" href="/" aria-label="coat pocket home">
+  <img class="lockup" src={src} alt="" width="194" height="64" />
+</a>

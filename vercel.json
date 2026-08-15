@@ -1,4 +1,18 @@
 {
   "cleanUrls": true,
-  "trailingSlash": true
+  "trailingSlash": true,
+  "redirects": [
+    {
+      "source": "/",
+      "has": [{ "type": "query", "key": "kind", "value": "game" }],
+      "destination": "/games/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [{ "type": "query", "key": "kind", "value": "app" }],
+      "destination": "/apps/",
+      "permanent": false
+    }
+  ]
 }
